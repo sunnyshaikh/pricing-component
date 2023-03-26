@@ -71,7 +71,7 @@ ul {
   justify-content: center;
 }
 
-.card {
+.card-wrapper {
   background: var(--white);
   width: calc((100% / var(--column)) - var(--gutter));
   min-width: 300px;
@@ -136,9 +136,21 @@ button.btn {
 }
 
 .card-primary {
+  position: relative;
+  z-index: 1;
+}
+
+.card-primary::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(145deg, var(--secondary), var(--primary));
+  border-radius: 10px;
+  z-index: -1;
   transform: scale(1.1);
-  font-size: .9rem;
 }
 
 .card-primary .plan,
@@ -213,8 +225,8 @@ button.btn {
 }
 
 @media screen and (max-width: 968px) {
-  .card-primary {
+  .card-primary::before {
     transform: scale(1);
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
 }
